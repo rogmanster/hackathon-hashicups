@@ -35,11 +35,3 @@ resource "aws_instance" "instance" {
 
   user_data = data.template_file.config.rendered
 }
-
-# Temporary till we find correct AMI with Docker
-# Docker takes time to install via server.tpl
-
-/*data "external" "bootstrap_docker" {
-  program = ["${path.module}/../../bootstrap_docker.sh", aws_instance.instance.public_ip, var.name]
-
-}*/

@@ -70,15 +70,3 @@ module "network" {
   public_subnets  = ["10.140.101.0/24", "10.140.102.0/24", "10.140.103.0/24"]
   cidr_block      = "10.140.0.0/16"
 }
-
-/*
-# Clean-up on destroy
-resource "null_resource" "destroy" {
-  provisioner "local-exec" {
-    when    = destroy
-    command = <<EOF
-    rm awskey.pem
-    rm bootstrap-*
-EOF
-  }
-}*/

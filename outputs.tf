@@ -6,7 +6,7 @@ public-api: ssh -i awskey.pem ec2-user@${module.public_api.public_ip}
 product-api: ssh -i awskey.pem ec2-user@${module.product_api.public_ip}
 postgres: ssh -i awskey.pem ec2-user@${module.postgres.public_ip}
 
-Takes a while - docker needs to install:
+Takes a while for docker to install:
 http://${module.frontend.public_ip}
 
 README
