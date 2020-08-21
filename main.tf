@@ -4,7 +4,6 @@ provider "aws" {
 
 module "frontend" {
   source = "./modules/instance"
-
   name              = "frontend"
   tags              = { Owner = "rchao@hashicorp.com", Region = "NA-WEST-STRAT", TTL = "3" , Purpose = "Demo"}
   vpc_id            = module.network.vpc_id
@@ -18,7 +17,6 @@ module "frontend" {
 
 module "public_api" {
   source = "./modules/instance"
-
   name              = "public_api"
   tags              = { Owner = "rchao@hashicorp.com", Region = "NA-WEST-STRAT", TTL = "3" , Purpose = "Demo"}
   vpc_id            = module.network.vpc_id
@@ -32,7 +30,6 @@ module "public_api" {
 
 module "product_api" {
   source = "./modules/instance"
-
   name              = "product_api"
   tags              = { Owner = "rchao@hashicorp.com", Region = "NA-WEST-STRAT", TTL = "3" , Purpose = "Demo"}
   vpc_id            = module.network.vpc_id
@@ -46,7 +43,6 @@ module "product_api" {
 
 module "postgres" {
   source = "./modules/instance"
-
   name              = "postgres"
   tags              = { Owner = "rchao@hashicorp.com", Region = "NA-WEST-STRAT", TTL = "3" , Purpose = "Demo"}
   vpc_id            = module.network.vpc_id
@@ -59,7 +55,6 @@ module "postgres" {
 
 module "network" {
   source = "./modules/network"
-
   name            = "rchao"
   private_subnets = ["10.140.1.0/24", "10.140.2.0/24", "10.140.3.0/24"]
   public_subnets  = ["10.140.101.0/24", "10.140.102.0/24", "10.140.103.0/24"]
