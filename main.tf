@@ -61,7 +61,6 @@ module "postgres" {
   upstream_ip       = "10.140.101.14"
 }
 
-
 module "network" {
   source = "./modules/network"
 

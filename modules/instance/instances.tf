@@ -12,7 +12,6 @@ data "aws_ami" "rhel_ami" {
   }
 }
 
-
 data "template_file" "config" {
   template = file("${path.module}/configs/${var.name}.tpl")
   vars = {
@@ -29,9 +28,7 @@ resource "aws_instance" "instance" {
   key_name                    = var.public_key
   iam_instance_profile        = aws_iam_instance_profile.instance.id
   private_ip                  = var.private_ip
-
-
-  tags = var.tags
+  tags                        = var.tags
 
   user_data = data.template_file.config.rendered
 }
