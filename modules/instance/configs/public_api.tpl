@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Docker
+#docker
 echo "Installing Docker"
 sudo yum install -y yum-utils device-mapper-persistent-data lvm2
 sudo yum-config-manager -y --add-repo https://download.docker.com/linux/centos/docker-ce.repo

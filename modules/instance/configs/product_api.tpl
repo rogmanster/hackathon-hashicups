@@ -35,5 +35,5 @@ services:
 EOF'
 
 #Waiting for Postgres to come up
-sleep 90
+sleep 120
 sudo /usr/local/bin/docker-compose up -d
