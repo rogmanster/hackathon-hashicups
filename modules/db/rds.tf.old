@@ -1,0 +1,48 @@
+resource "aws_security_group" "rds_access" {
+  vpc_id      = var.vpc_id
+
+  ingress {
+    from_port = 0
+    to_port   = 0
+    protocol  = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+resource "random_id" "server" {
+  byte_length = 4
+}
+
+resource "aws_db_subnet_group" "rds_subnet" {
+  name_prefix = var.name
+  subnet_ids  = flatten([var.vpc_subnet_ids ])
+}
+
+resource "aws_rds_cluster" "rds_cluster" {
+  cluster_identifier_prefix = "${var.name}-${random_id.server.hex}"
+  engine                    = "aurora-postgresql"
+  database_name             = var.db_name
+  master_username           = var.db_username
+  master_password           = var.db_password
+  db_subnet_group_name      = aws_db_subnet_group.rds_subnet.name
+  backup_retention_period   = 5
+  preferred_backup_window   = "07:00-09:00"
+  vpc_security_group_ids    = [ aws_security_group.rds_access.id ]
+  final_snapshot_identifier = "${var.name}-final-${random_id.server.hex}"
+}
+
+resource "aws_rds_cluster_instance" "rds" {
+  apply_immediately    = true
+  cluster_identifier   = aws_rds_cluster.rds_cluster.id
+  identifier_prefix    = "${var.name}-rds1"
+  engine               = "aurora-postgresql"
+  instance_class       = "db.r5.large"
+  db_subnet_group_name = aws_db_subnet_group.rds_subnet.name
+}
