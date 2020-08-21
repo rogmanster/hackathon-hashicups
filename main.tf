@@ -10,7 +10,6 @@ module "frontend" {
   vpc_id            = module.network.vpc_id
   vpc_subnet_ids    = module.network.public_subnets[0]
   security_group_id = module.network.security_group_id
-  instance_type     = "t2.micro"
   public_key        = aws_key_pair.awskey.key_name
   private_ip        = "10.140.101.10"
   upstream_ip       = "10.140.101.11"
@@ -25,7 +24,6 @@ module "public_api" {
   vpc_id            = module.network.vpc_id
   vpc_subnet_ids    = module.network.public_subnets[0]
   security_group_id = module.network.security_group_id
-  instance_type     = "t2.micro"
   public_key        = aws_key_pair.awskey.key_name
   private_ip        = "10.140.101.11"
   upstream_ip       = "10.140.101.12"
@@ -40,7 +38,6 @@ module "product_api" {
   vpc_id            = module.network.vpc_id
   vpc_subnet_ids    = module.network.public_subnets[0]
   security_group_id = module.network.security_group_id
-  instance_type     = "t2.micro"
   public_key        = aws_key_pair.awskey.key_name
   private_ip        = "10.140.101.12"
   upstream_ip       = "10.140.101.13"
@@ -55,7 +52,6 @@ module "postgres" {
   vpc_id            = module.network.vpc_id
   vpc_subnet_ids    = module.network.public_subnets[0]
   security_group_id = module.network.security_group_id
-  instance_type     = "t2.micro"
   public_key        = aws_key_pair.awskey.key_name
   private_ip        = "10.140.101.13"
   upstream_ip       = "10.140.101.14"

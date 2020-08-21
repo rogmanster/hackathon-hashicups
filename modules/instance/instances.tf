@@ -20,7 +20,7 @@ data "template_file" "config" {
 }
 
 resource "aws_instance" "instance" {
-  instance_type               = var.instance_type
+  instance_type               = "t2.micro"
   ami                         = data.aws_ami.rhel_ami.id
   vpc_security_group_ids      = [ var.security_group_id ]
   subnet_id                   = var.vpc_subnet_ids
