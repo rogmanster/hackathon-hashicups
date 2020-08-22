@@ -12,7 +12,6 @@ module "frontend" {
   public_key        = aws_key_pair.awskey.key_name
   private_ip        = "10.140.101.10"
   upstream_ip       = "10.140.101.11"
-
 }
 
 module "public_api" {
@@ -25,7 +24,6 @@ module "public_api" {
   public_key        = aws_key_pair.awskey.key_name
   private_ip        = "10.140.101.11"
   upstream_ip       = "10.140.101.12"
-
 }
 
 module "product_api" {
@@ -38,7 +36,6 @@ module "product_api" {
   public_key        = aws_key_pair.awskey.key_name
   private_ip        = "10.140.101.12"
   upstream_ip       = "10.140.101.13"
-
 }
 
 module "postgres" {
