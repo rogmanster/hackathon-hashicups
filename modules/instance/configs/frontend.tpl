@@ -8,7 +8,7 @@ sudo yum install -y --setopt=obsoletes=0 docker-ce-17.03.2.ce-1.el7.centos.x86_6
 sudo systemctl enable docker
 sudo systemctl start docker
 
-#conf
+#app
 mkdir -p /etc/nginx/conf.d
 cat <<-EOF > /etc/nginx/conf.d/default.conf
 # /etc/nginx/conf.d/default.conf
